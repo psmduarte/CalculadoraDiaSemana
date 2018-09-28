@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.example.diaDoNascimento.calculos.Calculadora;
+import com.example.diaDoNascimento.calculos.CalculoMes;
 
 @Controller
 @RequestMapping("/calculadora")
@@ -20,9 +21,9 @@ public class DiaControlador {
 	}
 	
 	@RequestMapping(value= {"/", ""}, method = RequestMethod.POST)
-	public ModelAndView recebeCalc(@ModelAttribute("calculadora") Calculadora calculadora, Model model) {
+	public ModelAndView recebeCalc(@ModelAttribute("calculadora") Calculadora calculadora,CalculoMes calculoMes, Model model) {
 		model.addAttribute("obj", "Voce nasceu no dia: " + calculadora.getDiaNascimento() + "<br>"
-							+ "Voce nasceu no mes:  " + calculadora.getMes() + "<br>" 
+							+ "Voce nasceu no mes:  " + calculoMes.getMes() + "<br>" 
 							+ "Voce nasceu no ano: " + calculadora.getAnoNascimento());
 		return new ModelAndView("calculadora");
 	}
